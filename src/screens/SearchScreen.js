@@ -1,3 +1,7 @@
+//OVERVIEW: Connecting to the Yelp API
+//We are axios library over fetch even tho fetch is built in.
+    //npm i axios --save worked without error.
+
 import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import SearchBar from '../components/SearchBar';

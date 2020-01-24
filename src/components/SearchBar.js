@@ -1,5 +1,4 @@
-//OVERVIEW: We want to detect when the user presses the button that we activate the code to fetch for the api
-//We add our 'onEndEditing() to the TextInput.
+//OVERVIEW: Connecting to the Yelp API
 
 import React, { Component } from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
