@@ -49,7 +49,7 @@ const SearchScreen = () => {
     };
 
     return ( 
-        <View>
+        <View style={{flex: 1}}>
             <SearchBar 
                 term={term}
                 onTermChange={setTerm}
@@ -59,15 +59,15 @@ const SearchScreen = () => {
             {errorMessage ? <Text>{errorMessage}</Text> : null}
             <Text>We have found {results.length} results</Text>
             <ScrollView>
-            <ResultsList 
-                title="Cost Effective"
-                results={filterResultsByPrice('$')}/>
-            <ResultsList 
-                title="Bit Pricier"
-                results={filterResultsByPrice('$$')}/>
-            <ResultsList 
-                title="Big Spender"
-                results={filterResultsByPrice('$$$')}/>
+                <ResultsList 
+                    title="Cost Effective"
+                    results={filterResultsByPrice('$')}/>
+                <ResultsList 
+                    title="Bit Pricier"
+                    results={filterResultsByPrice('$$')}/>
+                <ResultsList 
+                    title="Big Spender"
+                    results={filterResultsByPrice('$$$')}/>
             </ScrollView>
         </View>
      );
