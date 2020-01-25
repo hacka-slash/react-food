@@ -32,9 +32,22 @@ const SearchScreen = () => {
 
     
     }
+
     useEffect(() => {
         searchApi('pasta');
     }, [])
+
+    const filterResultsByPrice = (price) => {
+        //price === '$' || '$$' ||| '$$$'
+        let filteredResults = [];
+        for(i = 0; i < results.length; i++){
+            if(results[i].price == price)
+                filteredResults.push(results[i])
+
+        }
+        return filteredResults;
+    };
+
     return ( 
         <View>
             <SearchBar 
@@ -46,11 +59,14 @@ const SearchScreen = () => {
             {errorMessage ? <Text>{errorMessage}</Text> : null}
             <Text>We have found {results.length} results</Text>
             <ResultsList 
-                title="Cost Effective"/>
+                title="Cost Effective"
+                results={filterResultsByPrice('$')}/>
             <ResultsList 
-                title="Bit Pricier"/>
+                title="Bit Pricier"
+                results={filterResultsByPrice('$$')}/>
             <ResultsList 
-                title="Big Spender"/>
+                title="Big Spender"
+                results={filterResultsByPrice('$$$')}/>
         </View>
      );
 }
