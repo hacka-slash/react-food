@@ -35,7 +35,7 @@ const SearchScreen = () => {
                 onTermSubmit={searchApi}
                                 
             />
-            <Text>{errorMessage}</Text>
+            {errorMessage ? <Text>{errorMessage}</Text> : null}
             <Text>We have found {results.length} results</Text>
         </View>
      );
