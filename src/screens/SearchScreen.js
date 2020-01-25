@@ -1,6 +1,6 @@
-//OVERVIEW: We make a call to the yelp API to return data based on our params on the button press
+//OVERVIEW: useEffect hook will allow us to run the function only once the component is first rendered
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import SearchBar from '../components/SearchBar';
 import yelp from '../api/yelp';
@@ -11,6 +11,7 @@ const SearchScreen = () => {
     //Initialized as an empty array but will be filled with data from the response body
     const [results, setResults] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
+
 
     
     //asyncrhonous operation
@@ -26,6 +27,10 @@ const SearchScreen = () => {
     }catch(e){
         setErrorMessage('Something went wrong');
     }
+
+    useEffect(() => {
+        searchApi('pasta');
+    }, [])
     }
     return ( 
         <View>
