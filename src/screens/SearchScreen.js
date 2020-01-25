@@ -1,7 +1,7 @@
 //OVERVIEW: useEffect hook will allow us to run the function only once the component is first rendered
 
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import SearchBar from '../components/SearchBar';
 import yelp from '../api/yelp';
 import ResultsList from '../components/ResultsList';
@@ -58,6 +58,7 @@ const SearchScreen = () => {
             />
             {errorMessage ? <Text>{errorMessage}</Text> : null}
             <Text>We have found {results.length} results</Text>
+            <ScrollView>
             <ResultsList 
                 title="Cost Effective"
                 results={filterResultsByPrice('$')}/>
@@ -67,6 +68,7 @@ const SearchScreen = () => {
             <ResultsList 
                 title="Big Spender"
                 results={filterResultsByPrice('$$$')}/>
+            </ScrollView>
         </View>
      );
 }
