@@ -15,12 +15,13 @@ const SearchScreen = () => {
 
     
     //asyncrhonous operation
-    const searchApi = async () => {
+    const searchApi = async (searchTerm) => {
+        console.log("Testing");
         try {
          const response = await yelp.get('/search', {
             params: {
                 limit: 50,
-                term:{term},
+                term: searchTerm,
                 location: 'san jose'
         }});
         setResults(response.data.businesses);
@@ -28,16 +29,17 @@ const SearchScreen = () => {
         setErrorMessage('Something went wrong');
     }
 
+    
+    }
     useEffect(() => {
         searchApi('pasta');
     }, [])
-    }
     return ( 
         <View>
             <SearchBar 
                 term={term}
                 onTermChange={setTerm}
-                onTermSubmit={searchApi}
+                onTermSubmit={() => searchApi(term)}
                                 
             />
             {errorMessage ? <Text>{errorMessage}</Text> : null}
