@@ -10,10 +10,12 @@ const SearchScreen = () => {
     const [term, setTerm] = useState('');
     //Initialized as an empty array but will be filled with data from the response body
     const [results, setResults] = useState([]);
+    const [errorMessage, setErrorMessage] = useState('');
 
     
     //asyncrhonous operation
     const searchApi = async () => {
+        try {
          const response = await yelp.get('/search', {
             params: {
                 limit: 50,
@@ -21,7 +23,9 @@ const SearchScreen = () => {
                 location: 'san jose'
         }});
         setResults(response.data.businesses);
-        console.log(response.data.businesses);
+    }catch(e){
+        setErrorMessage('Something went wrong');
+    }
     }
     return ( 
         <View>
@@ -31,7 +35,7 @@ const SearchScreen = () => {
                 onTermSubmit={searchApi}
                                 
             />
-            <Text>Search Screen</Text>
+            <Text>{errorMessage}</Text>
             <Text>We have found {results.length} results</Text>
         </View>
      );
